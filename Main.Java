@@ -9,36 +9,22 @@ import java.io.InputStreamReader;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		InputStream teclado=System.in;
-		Diaria d=new Diaria();
-		Inicio in=new Inicio();
+	public static void main(String[] args) throws InterruptedException, IOException {
 		
-			
-
-		//o que vai receber do sistema
-
-
-		while(teclado!=null) {
-			System.out.println("Olá,Seja muito bem-vindo!");
-			System.out.println("digite seu cpf");
-			//classe que recebe o que o usuario digitou
-			InputStreamReader recebe= new InputStreamReader(teclado);
-			
-			//classe em ler o que todos acima
-			BufferedReader ler =new BufferedReader(recebe);	
-			
-			String dados=ler.readLine();
-			System.out.println("CPF do usuario:"+dados);
-			int second=(1000*5);
-			
-			in.detalhes();
-			System.out.println(d);
-			d.cobrar();
-			break;
+		Diaria d=new Diaria();
+		Entrada in=new Entrada();
+		Saida saindo=new Saida();
+		
+		in.detalhes();
+		System.out.println(d);
+		//System.out.println(d.cobrar());
+		
+		in.entrando();
+		
+		saindo.cobrancas();
 
 			
-		}
+		
 		
 	
 		
