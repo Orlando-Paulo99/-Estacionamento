@@ -1,4 +1,4 @@
-ackage Estacionamento;
+package Estacionamento;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -31,13 +31,19 @@ public class Saida extends Modelo {
 				BufferedReader ler=new BufferedReader(recebe);
 			}
 		}
-		
 		@Override
 		public void cobrancas() {
+			int second=(1000*5);
+			double calculando=getpegandoHora();
+			System.out.println(calculando);
 			
-			
+		}
+		private double getpegandoHora() {
+			// TODO Auto-generated method stub
+			return 0;
 		}
 		
 	
 
 }
+
