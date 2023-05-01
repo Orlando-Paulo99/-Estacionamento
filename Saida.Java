@@ -1,13 +1,14 @@
 package Estacionamento;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class Saida extends Modelo {
+public class Saida extends Modelo  {
 	//com essa classe podemos além das datas as horas,minutos e segundos
 		Calendar agora = Calendar.getInstance();
 		
@@ -23,25 +24,53 @@ public class Saida extends Modelo {
 		protected long entrada=(agora.HOUR)+( agora.MINUTE);
 		protected long minuto=agora.MINUTE;
 		
-		public void saindo() {
-			InputStream tec=System.in;
+		InputStream tec=System.in;
+		
+		//instanciando a variavel da entrada
+		private Entrada e=new Entrada();
+		
+		public void detalhesaida() throws IOException {
+			
 			while(tec!=null) {
-				System.out.println("Digite seu cpf ");
+
+				System.out.println("Obrigado por usar nosso estacionamento!");
+				System.out.println("Deseja sair?(s/n)");
 				InputStreamReader recebe=new InputStreamReader(tec);
 				BufferedReader ler=new BufferedReader(recebe);
+				
+				String pergunta=ler.readLine();
+				if(pergunta.equals("s")){
+					System.out.println("Digite seu cpf ");
+					InputStreamReader cpf=new InputStreamReader(tec);
+					BufferedReader lercpf=new BufferedReader(cpf);
+					
+					String cpf1=lercpf.readLine();
+					//criando uma variavel e dando o valor da que eu instaciei  
+					String cpfInicial=e.dados;
+					
+					if(cpf1 ==cpfInicial) {
+						System.out.println("cpf ok");
+					}else if(cpf1 != cpfInicial){
+						System.out.println("invalido");
+					}
+				}
+					
+				break;
 			}
 		}
+	
+
+
+
+
+		Entrada enter=new Entrada();
 		@Override
 		public void cobrancas() {
-			int second=(1000*5);
-			double calculando=getpegandoHora();
-			System.out.println(calculando);
+			
+				
 			
 		}
-		private double getpegandoHora() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+		
 		
 	
 
