@@ -24,11 +24,11 @@ public class Entrada extends Modelo{
 	protected long entrada=(agora.HOUR)+( agora.MINUTE);
 	protected long minuto=agora.MINUTE;
 	
-	int cont=0;
-
-	InputStream  tec=System.in;
-
+	public static String dados;
 	
+	public static long cInicial=System.currentTimeMillis();
+	
+	InputStream  tec=System.in;
 	
 	@Override
 	public void detalhes() {
@@ -41,7 +41,7 @@ public class Entrada extends Modelo{
 		
 	}
 	
-	@SuppressWarnings("unused")
+	@SuppressWarnings({ "unused", "static-access" })
 	public void entrando() throws IOException {
 
 		while(tec!=null) {
@@ -52,21 +52,19 @@ public class Entrada extends Modelo{
 			//classe em ler o que todos acima
 			BufferedReader ler =new BufferedReader(recebe);	
 			
-			String dados=ler.readLine();
+			this.dados=ler.readLine();
 			System.out.println("CPF do usuario "+dados);
 			@SuppressWarnings("unused")
 			String horaDaEntrada= agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
 			System.out.println("Hora da Entrada  "+horaDaEntrada);
+			System.out.println(cInicial);
+		
 			
 			
 			break;
 			
 		}
 		
-	}
-	
-	public String getpegandoHora(String horaDaEntrada) {
-		return horaDaEntrada;
 	}
 	
 	
