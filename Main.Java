@@ -14,17 +14,24 @@ public class Main {
 		Diaria d=new Diaria();
 		Entrada in=new Entrada();
 		Saida saindo=new Saida();
+		InputStream tec=System.in;
 		
 		in.detalhes();
-		System.out.println(d);
-		//System.out.println(d.cobrar());
+		//System.out.println(d);
+		
 		
 		in.entrando();
 		
+		saindo.detalhesaida();
 		saindo.cobrancas();
 
-			
 		
+			
+		/*System.out.println( "ok" );    
+        Thread.sleep(10 * 1000 ); // aguarda 5segundos
+        System.out.println( "ok" );
+        Thread.sleep(10 * 1000 ); // aguarda 10segundos
+        System.out.println( "ok" );  */
 		
 	
 		
@@ -32,3 +39,4 @@ public class Main {
 	}
 
 }
+
