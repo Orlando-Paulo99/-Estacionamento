@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Entrada extends Modelo{
 
@@ -15,7 +17,6 @@ public class Entrada extends Modelo{
 	//Conversão de data
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
-	protected long cpf;
 	protected double valorInicial=2.50;
 	protected double acrescimo=5.00;
 	protected int horaInicial = agora.get(Calendar.HOUR) + ((Calendar.PM==1)?12:0);
@@ -24,27 +25,35 @@ public class Entrada extends Modelo{
 	protected long entrada=(agora.HOUR)+( agora.MINUTE);
 	protected long minuto=agora.MINUTE;
 	
+	double cont=0;
+	
 	public static String dados;
 	
-	public static long cInicial=System.currentTimeMillis();
+	
 	
 	InputStream  tec=System.in;
+	
+	String inicio="Data:"+sdf.format(data)+" Horário: "+ agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
+	
+	String hours=agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
+	
+	
 	
 	@Override
 	public void detalhes() {
 		//Data formatada
-		System.out.println("\nData: "+sdf.format(data)+" Horário: "+ agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND));
+		System.out.println("\nData: "+inicio);
 		System.out.println("Olá,Seja muito bem-vindo!");
 		System.out.println("Segue abaixo os detalhes do nosso estacionamento:");
 		System.out.println("Valor até 40 minutos: "+valorInicial);
-		System.out.println("Após 40 minutos inicial a cada 20 minutos irá ser cobrado um taxa de : "+acrescimo);
+		System.out.println("Após 40 minutos inicial a cada 20 minutos irá ser cobrado um taxa de : "+acrescimo +"\n");
 		
 	}
 	
 	@SuppressWarnings({ "unused", "static-access" })
-	public void entrando() throws IOException {
+	public void entrando() throws IOException, InterruptedException {
 
-		while(tec!=null) {
+	
 			System.out.println("digite seu cpf");
 			//classe que recebe o que o usuario digitou
 			InputStreamReader recebe= new InputStreamReader(tec);
@@ -52,23 +61,27 @@ public class Entrada extends Modelo{
 			//classe em ler o que todos acima
 			BufferedReader ler =new BufferedReader(recebe);	
 			
-			this.dados=ler.readLine();
-			System.out.println("CPF do usuario "+dados);
+			dados=ler.readLine();
+			
 			@SuppressWarnings("unused")
-			String horaDaEntrada= agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
-			System.out.println("Hora da Entrada  "+horaDaEntrada);
-			System.out.println(cInicial);
-		
-			
-			
-			break;
+			String horaDaEntrada=inicio ;
+			System.out.println("CPF: "+dados+" "+horaDaEntrada);
+			while(true) {
+				Timer cronometro = new Timer();
+				TimerTask tarefa = new TimerTask() {
+				    @Override
+				    public void run() {
+				        
+				    }
+				};
+				int milissegundos = 1000;
+				cronometro.schedule(tarefa, milissegundos);
+				Thread.sleep(5* 1000 ); // aguarda 5segundos
+				cont+=acrescimo;
+				System.out.println("saldo devedor:"+(cont+ valorInicial));
+			}
 			
 		}
 		
-	}
-	
-	
-	
-	
 
 }
