@@ -66,22 +66,13 @@ public class Entrada extends Modelo{
 			@SuppressWarnings("unused")
 			String horaDaEntrada=inicio ;
 			System.out.println("CPF: "+dados+" "+horaDaEntrada);
-			while(true) {
-				Timer cronometro = new Timer();
-				TimerTask tarefa = new TimerTask() {
-				    @Override
-				    public void run() {
-				        
-				    }
-				};
-				int milissegundos = 1000;
-				cronometro.schedule(tarefa, milissegundos);
-				Thread.sleep(5* 1000 ); // aguarda 5segundos
-				cont+=acrescimo;
-				System.out.println("saldo devedor:"+(cont+ valorInicial));
-			}
 			
 		}
 		
+	
+	
+	
+	
+	
 
 }
