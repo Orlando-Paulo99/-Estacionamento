@@ -19,7 +19,7 @@ public class Entrada extends Modelo{
 	
 	protected double valorInicial=2.50;
 	protected double acrescimo=5.00;
-	protected int horaInicial = agora.get(Calendar.HOUR) + ((Calendar.PM==1)?12:0);
+	//protected int horaInicial = agora.get(Calendar.HOUR) + ((Calendar.PM==1)?12:0);
     protected int minutInicial = agora.get(Calendar.MINUTE);
     protected int segundoInicial = agora.get(Calendar.SECOND);
 	protected long entrada=(agora.HOUR)+( agora.MINUTE);
@@ -36,6 +36,8 @@ public class Entrada extends Modelo{
 	String inicio="Data:"+sdf.format(data)+" Horário: "+ agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
 	
 	String hours=agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
+
+	private String sai;
 	
 	
 	
@@ -67,12 +69,55 @@ public class Entrada extends Modelo{
 			String horaDaEntrada=inicio ;
 			System.out.println("CPF: "+dados+" "+horaDaEntrada);
 			
+			
+			
 		}
 		
-	
-	
-	
-	
-	
+	@Override
+	public void cobrancas() throws InterruptedException, IOException {
+		
+		while(true) {
+			Timer cronometro = new Timer();
+			
+			TimerTask tarefa = new TimerTask() {
+			    @Override
+			    public void run() {
+			    	
+			    	
+			        
+			    }
+			};
+			int milissegundos = 1000;
+			cronometro.schedule(tarefa, milissegundos);	
+			Thread.sleep(4* 1000 ); // aguarda 5segundos
+			cont+=acrescimo;
+			System.out.println("Deseja sair?[1]-Sair");
+	    	InputStreamReader saida=new InputStreamReader(tec);
+	    	BufferedReader lendo=new BufferedReader(saida);
+	    	
+			try {
+				sai = lendo.readLine();
+				if(sai.equals("1")) {
+					
+					cont+=acrescimo;
+					System.out.println("Valor da cobrança:"+(valorInicial+acrescimo));
+					Thread.sleep(5* 1000 ); // aguarda 5segundos
+						
+		    		
+		    	
+		    	}else {
+		    		Thread.sleep(5* 1000 ); // aguarda 5segundos
+					cont+=acrescimo;
+		    	}
+		    	
+			} catch (IOException | InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	
+			}
+			
+	}
+		
+	}
 
-}
