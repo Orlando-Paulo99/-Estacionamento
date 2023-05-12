@@ -2,10 +2,13 @@ package Estacionamento;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.Duration;
 
 public class Main {
 
@@ -16,22 +19,24 @@ public class Main {
 		Saida saindo=new Saida();
 		InputStream tec=System.in;
 		
+		
 		in.detalhes();
 		//System.out.println(d);
 		
 		
 		in.entrando();
 		
-		saindo.detalhesaida();
-		saindo.cobrancas();
-
+		System.out.println("deseja sair?[1]-sair");
+		InputStreamReader sair=new InputStreamReader(tec);
+		BufferedReader pega= new BufferedReader(sair);
 		
-			
-		/*System.out.println( "ok" );    
-        Thread.sleep(10 * 1000 ); // aguarda 5segundos
-        System.out.println( "ok" );
-        Thread.sleep(10 * 1000 ); // aguarda 10segundos
-        System.out.println( "ok" );  */
+		String saida=pega.readLine();
+		
+		if(saida.equals("1")) {
+			in.cobrancas();
+		}
+		
+		
 		
 	
 		
