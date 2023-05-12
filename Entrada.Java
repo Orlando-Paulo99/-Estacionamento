@@ -24,7 +24,7 @@ public class Entrada extends Modelo{
     protected int segundoInicial = agora.get(Calendar.SECOND);
 	protected long entrada=(agora.HOUR)+( agora.MINUTE);
 	protected long minuto=agora.MINUTE;
-	
+	double contador;
 	double cont=0;
 	
 	public static String dados;
@@ -37,9 +37,6 @@ public class Entrada extends Modelo{
 	
 	String hours=agora.get(Calendar.HOUR)+":"+agora.get(Calendar.MINUTE)+":"+agora.get(Calendar.SECOND);
 
-	private String sai;
-	
-	
 	
 	@Override
 	public void detalhes() {
@@ -71,10 +68,14 @@ public class Entrada extends Modelo{
 			
 			
 			
+			
+			
+			
+			
 		}
 		
 	@Override
-	public void cobrancas() throws InterruptedException, IOException {
+	public double cobrancas() throws InterruptedException, IOException {
 		
 		while(true) {
 			Timer cronometro = new Timer();
@@ -82,42 +83,47 @@ public class Entrada extends Modelo{
 			TimerTask tarefa = new TimerTask() {
 			    @Override
 			    public void run() {
+			    	for(int temp=0;temp<(86400*1000);temp ++) {
+			    		contador+=(valorInicial+acrescimo);
+
+						System.out.println("Taxa a ser paga:"+contador);
+
+						try {
+							Thread.sleep(5* 1000 );
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							System.out.println("ERRO:"+e);
+						} // aguarda 5segundos
+			    	}
+			    
+					
 			    	
+			    		
+			    
+					
+					
+					
+					
+					
+					
 			    	
 			        
 			    }
 			};
 			int milissegundos = 1000;
-			cronometro.schedule(tarefa, milissegundos);	
-			Thread.sleep(4* 1000 ); // aguarda 5segundos
-			cont+=acrescimo;
-			System.out.println("Deseja sair?[1]-Sair");
-	    	InputStreamReader saida=new InputStreamReader(tec);
-	    	BufferedReader lendo=new BufferedReader(saida);
-	    	
-			try {
-				sai = lendo.readLine();
-				if(sai.equals("1")) {
-					
-					cont+=acrescimo;
-					System.out.println("Valor da cobrança:"+(valorInicial+acrescimo));
-					Thread.sleep(5* 1000 ); // aguarda 5segundos
-						
-		    		
-		    	
-		    	}else {
-		    		Thread.sleep(5* 1000 ); // aguarda 5segundos
-					cont+=acrescimo;
-		    	}
-		    	
-			} catch (IOException | InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			cronometro.schedule(tarefa, milissegundos);
+			return milissegundos;	
+			
+			
 	    	
 			}
+	
 			
 	}
-		
+	
+	
+	
+	
+	
+	
 	}
-
