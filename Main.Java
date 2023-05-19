@@ -1,47 +1,34 @@
-package Estacionamento;
+package principal;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.time.Duration;
 
-public class Main {
+import Estacionamento.Entrada;
+import Estacionamento.Person;
+import Estacionamento.Tipo;
+
+public class main {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		
-		Diaria d=new Diaria();
-		Entrada in=new Entrada();
-		Saida saindo=new Saida();
-		InputStream tec=System.in;
+		Entrada e=new Entrada();
 		
 		
-		in.detalhes();
-		//System.out.println(d);
+		Person p=new Person("Orlando","(81)92624419","122-333-366-59", "sim");
+		
+		Person p1=new Person("------","()xxxxxxxxx","xxx-xxx-xxx-xx", "sim");
+		System.out.print(p1.getname());
+		System.out.print(p1.gettell());
+		System.out.print(p1.getcpf());
+		
+
 		
 		
-		in.entrando();
+		e.cobrancas();
 		
-		System.out.println("deseja sair?[1]-sair");
-		InputStreamReader sair=new InputStreamReader(tec);
-		BufferedReader pega= new BufferedReader(sair);
-		
-		String saida=pega.readLine();
-		
-		if(saida.equals("1")) {
-			in.cobrancas();
-		}
-		
-		
-		
-	
 		
 		
 	}
 
 }
+
 
