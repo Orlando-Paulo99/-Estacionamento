@@ -1,0 +1,44 @@
+package Estacionamento;
+
+public class Person {
+	private String name;
+	private String tell;
+	private String cpf;
+	private String sair;
+	public Person(String name,String tell,String cpf,String sair) {
+		this.name=name;
+		this.cpf=cpf;
+		this.tell=tell;
+		this.sair=sair;
+		
+	}
+	public String getSaida() {
+		return saida;
+	}
+	public void setSaida(String saida) {
+		this.sair = saida;
+	}
+	public Person() {
+		
+	}
+	public String getname() {
+		return name;
+	}
+	public void setname(String n) {
+		this.name=n;
+	}
+	
+	public String gettell() {
+		return tell;
+	}
+	public void settell(String t) {
+		this.tell=t;
+	}
+	public String getcpf() {
+		return cpf;
+	}
+	public void setcpf(String c) {
+		this.cpf=c;
+		
+	}
+}
